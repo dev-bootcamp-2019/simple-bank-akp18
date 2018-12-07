@@ -35,8 +35,8 @@ contract('SimpleBank', function(accounts) {
         LogDepositMade.watch(function(error, log){ resolve(log);});
     });
 
-    const logAccountAddress = log.args.accountAddress;
-    const logDepositAmount = log.args.amount.toNumber();
+    const logAccountAddress = log.args.dpaccount;
+    const logDepositAmount = log.args.depositAmount.toNumber();
 
     assert.equal(expectedEventResult.accountAddress, logAccountAddress, "LogDepositMade event accountAddress property not emitted, check deposit method");
     assert.equal(expectedEventResult.amount, logDepositAmount, "LogDepositMade event amount property not emitted, check deposit method");
@@ -56,7 +56,7 @@ contract('SimpleBank', function(accounts) {
       LogWithdrawal.watch(function(error, log){ resolve(log);});
     });
     
-    const accountAddress = log.args.accountAddress;
+    const accountAddress = log.args.wdaccount;
     const newBalance = log.args.newBalance.toNumber();
     const withdrawAmount = log.args.withdrawAmount.toNumber();
 
